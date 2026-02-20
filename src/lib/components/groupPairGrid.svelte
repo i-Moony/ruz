@@ -41,7 +41,7 @@
     });
 </script>
 
-<div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
     {#each entriesByDayMatrix as dayEntries}
         <GroupDay {dayEntries}></GroupDay>
     {/each}

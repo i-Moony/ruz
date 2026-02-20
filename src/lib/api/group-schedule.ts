@@ -119,7 +119,7 @@ interface Lecturer {
 	id: number;
 }
 
-interface GroupScheduleEntryRequest {
+export interface GroupScheduleEntryRequest {
 	/* Auditorium number and location in short form */
 	auditorium: string;
 	/* Audotorium capacity */

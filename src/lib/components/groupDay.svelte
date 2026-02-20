@@ -16,9 +16,9 @@
     };
 </script>
 
-<div class="bg-neutral-400 rounded-3xl flex flex-col gap-4 p-2 items-center">
-    <div class="flex flex-col gap-0.5 items-center text-center">
-        <p>{date} - {weekday}</p>
+<div class="bg-neutral-400 rounded-3xl flex flex-col gap-4 p-2 py-4 items-center font-display">
+    <div class="flex flex-col gap-0.5 items-center text-center text-xl font-semibold">
+        <p>{weekday}, {date}</p>
     </div>
     <div class="flex flex-col gap-2 w-full">
         {#each dayEntries as entry}

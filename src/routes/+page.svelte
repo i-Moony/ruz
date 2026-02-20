@@ -1,21 +1,21 @@
-<script lang="ts">
-	import { parseGroupSchedule, type GroupScheduleEntry } from "$lib/api/group-schedule";
-	import GroupPairGrid from "$lib/components/groupPairGrid.svelte";
-	import { onMount } from "svelte";
+<header>
+    <p>Моё Расписание</p>
+</header>
+<main>
+    <h1>Моё Расписание</h1>
+    <h2>
+        Новая, удобная система для студентов Финашки, которая работает даже без интернета
+    </h2>
+    <h2>
+        А ещё вы можете убрать из расписания предметы других подгрупп
+    </h2>
+</main>
 
-    let isLoading = true;
-    let data:GroupScheduleEntry[];
+<a href="/schedule/personal/setup">Начать пользоваться</a>
 
-    onMount(async () => {
-        const response = await fetch("/api/schedule/group");
-        const json = await response.json();
-        data = parseGroupSchedule(json).sort((a, b) => a.startDate.getTime() - b.startDate.getTime());
-        isLoading = false
-    });
-</script>
-
-{#if isLoading}
-    <h1>Loading data...</h1>
-{:else}
-    <GroupPairGrid entries={data}></GroupPairGrid>
-{/if}
+<h2>Начать пользоваться просто!</h2>
+<ol>
+    <li>Шаг 1. Установите этот сайт как приложение</li>
+    <li>Шаг 2. Настройте своё расписание так, как вам будет удобно</li>
+    <li>Шаг 3. Пользуйтесь! С нашим удобным приложением расписание будет доступно даже без подключения к интернету!</li>
+</ol>

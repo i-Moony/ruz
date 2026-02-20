@@ -1,5 +1,7 @@
 import { json } from "@sveltejs/kit";
-import { fetchGroupSchedule } from '../../../../lib/api/group-schedule';
+import { fetchGroupSchedule, type GroupScheduleEntryRequest } from '../../../../lib/api/group-schedule';
+
+const hashMap:Map<string, GroupScheduleEntryRequest[]> = new Map();
 
 export async function GET({ url }) {
     const groupParam = url.searchParams.get("group");
@@ -10,7 +12,16 @@ export async function GET({ url }) {
     const startingDate = startingDateParam ? new Date(startingDateParam) : getMonday();
     const endingDate = endingDateParam ? new Date(endingDateParam) : getSunday();
 
+    const cache = hashMap.get(`${group}-${startingDate}-${endingDate}`);
+
+    if (cache)
+        return json(cache, { status: 200 });
+
+    console.log("Cache miss!");
+
     const test = await fetchGroupSchedule(group, startingDate, endingDate);
+
+    hashMap.set(`${group}-${startingDate}-${endingDate}`, test);
 
 	return json(test, { status: 200 });
 }
